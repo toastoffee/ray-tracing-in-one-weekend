@@ -13,6 +13,8 @@ int main() {
 
     for (int j = image_height - 1; j >= 0 ; --j) {
         for (int i = 0; i < image_width; ++i) {
+            std::cerr << "\rScanlines remaining: " << j << ' ' << std::flush;
+
             auto r = double(i) / (image_width-1);
             auto g = double (j) / (image_height-1);
             auto b = 0.25f;
@@ -24,4 +26,6 @@ int main() {
             std::cout << ir << ' ' << ig << ' ' << ib << '\n';
         }
     }
+
+    std::cerr << "\nDone.\n";
 }

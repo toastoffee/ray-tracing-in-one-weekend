@@ -4,22 +4,29 @@
 #include "src/vec3.hpp"
 #include "src/ray.hpp"
 
-bool hit_sphere(const Point3& center, double radius, const Ray& r) {
+double hit_sphere(const Point3& center, double radius, const Ray& r) {
     Vec3 oc = r.origin() - center;
-    auto a = dot(r.direction(), r.direction());
-    auto b = 2.0 * dot(oc, r.direction());
-    auto c = dot(oc, oc) - radius * radius;
-    auto discriminant = b*b - 4*a*c;
-    return (discriminant > 0);
+    auto a = r.direction().squared_length();
+    auto half_b = dot(oc, r.direction());
+    auto c = oc.squared_length() - radius*radius;
+    auto discriminant = half_b * half_b - a * c;
+    if(discriminant < 0) {
+        return -1.0;
+    } else {
+        return (-half_b - sqrt(discriminant) ) / a;
+    }
 }
 
 Color ray_color(const Ray& r){
-    if(hit_sphere(Point3(0,0,-1), 0.5, r)){
-        return Color (1, 0, 0);
+    auto t = hit_sphere(Point3(0, 0, -1), 0.5, r);
+
+    if(t > 0.0){
+        Vec3 N = normalize(r.at(t) - Vec3(0, 0, -1));
+        return  0.5 * Color(N.x()+1, N.y()+1, N.z()+1);
     }
 
     Vec3 unit_direction = normalize(r.direction());
-    double t = 0.5 * (unit_direction.y() + 1.0);
+    t = 0.5 * (unit_direction.y() + 1.0);
     return (1.0 - t) * Color(1.0, 1.0, 1.0) + t * Color(0.5, 0.7, 1.0);
 }
 

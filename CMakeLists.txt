@@ -7,4 +7,7 @@ add_executable(ray_tracing_in_one_weekend
         main.cpp
         src/vec3.hpp
         src/color.hpp
-        src/ray.hpp)
+        src/ray.hpp
+        src/hittable.h
+        src/sphere.hpp
+        src/hittable_list.h)

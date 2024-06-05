@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "color.hpp"
-#include "vec3.hpp"
+#include "src/color.hpp"
+#include "src/vec3.hpp"
 
 
 int main() {

@@ -10,4 +10,4 @@ add_executable(ray_tracing_in_one_weekend
         src/ray.hpp
         src/hittable.h
         src/sphere.hpp
-        src/hittable_list.h)
+        src/hittable_list.hpp)

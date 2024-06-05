@@ -15,7 +15,6 @@
 
 #include "vec3.hpp"
 
-
 class Ray {
 public:
     Point3 orig;

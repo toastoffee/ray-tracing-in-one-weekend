@@ -13,11 +13,14 @@
 #ifndef RAY_TRACING_IN_ONE_WEEKEND_HITTABLE_H
 #define RAY_TRACING_IN_ONE_WEEKEND_HITTABLE_H
 
-#include "ray.hpp"
+#include "rtweekend.h"
+
+class Material;
 
 struct hit_record {
     Point3 p;
     Vec3 normal;
+    std::shared_ptr<Material> mat_ptr;
     double t;
     bool front_face;
 

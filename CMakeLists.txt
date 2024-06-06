@@ -12,4 +12,5 @@ add_executable(ray_tracing_in_one_weekend
         src/sphere.hpp
         src/hittable_list.hpp
         src/rtweekend.h
-        src/camera.hpp)
+        src/camera.hpp
+        src/material.h)

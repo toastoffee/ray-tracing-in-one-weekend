@@ -23,10 +23,16 @@ private:
     Vec3 vertical;
 
 public:
-    Camera() {
-        auto aspect_ratio = 16.0 / 9.0;
-        auto viewport_height = 2.0;
+    Camera(
+            double vfov, // vertical field-of-view in degrees
+            double aspect_ratio
+    ) {
+        auto theta = degrees_to_radians(vfov);
+        auto h = tan(theta/2);
+        auto viewport_height = 2.0 * h;
         auto viewport_width = aspect_ratio * viewport_height;
+
+
         auto focal_length = 1.0;
 
         origin = Point3 (0,0,0);

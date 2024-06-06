@@ -127,4 +127,9 @@ Vec3 random_in_unit_sphere() {
     }
 }
 
+Vec3 random_unit_vector() {
+    return normalize(random_in_unit_sphere());
+}
+
+
 #endif //RAY_TRACING_IN_ONE_WEEKEND_VEC3_HPP

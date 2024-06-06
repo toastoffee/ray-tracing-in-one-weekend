@@ -145,5 +145,8 @@ Vec3 random_in_hemisphere(const Vec3& normal) {
         return -in_unit_sphere;
 }
 
+Vec3 reflect(const Vec3& v, const Vec3& n) {
+    return v - 2*dot(v,n)*n;
+}
 
 #endif //RAY_TRACING_IN_ONE_WEEKEND_VEC3_HPP

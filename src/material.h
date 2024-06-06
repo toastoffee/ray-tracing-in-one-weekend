@@ -46,4 +46,21 @@ public:
     Color albedo;
 };
 
+class Metal : public Material {
+public:
+    Metal(const Color& a) : albedo(a) {}
+
+    virtual bool Scatter(
+            const Ray& r_in, const hit_record& rec, Color& attenuation, Ray& scattered
+    ) const override {
+        Vec3 reflected = reflect(normalize(r_in.direction()), rec.normal);
+        scattered = Ray(rec.p, reflected);
+        attenuation = albedo;
+        return (dot(scattered.direction(), rec.normal) > 0);
+    }
+
+public:
+    Color albedo;
+};
+
 #endif //RAY_TRACING_IN_ONE_WEEKEND_MATERIAL_H
